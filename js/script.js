@@ -17,10 +17,7 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 const studentList = document.getElementsByClassName('student-item');
-// console.log(studentList);
 const itemsPerPage = 10;
-// console.log(itemsPerPage);
-// console.log(typeof itemsPerPage);
 
 
 
@@ -42,30 +39,51 @@ function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = page * itemsPerPage;
    for (let i = 0; i < list.length; i ++) {
+      list[i].style.display = 'none';
       if ( i >= startIndex && i < endIndex ) {
          list[i].style.display = '';
       }
    }
 }  
-
-showPage(studentList, 3);
+// code to test functionality of `showPage` function
+// showPage(studentList, 3);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
 function appendPageLinks(list) {
+   // variables for pagination
    const pageDiv = document.getElementsByClassName('page')[0];
    const paginationDiv = document.createElement('div');
    const ul = document.createElement('ul');
-   const li = document.createElement('li');
-   const anchor = document.createElement('a');
 
+   // determine number of pages required
+   const numberOfPages = Math.ceil(list.length/itemsPerPage);
+
+   // append <div> and <ul> elements and add class name to <div>
    paginationDiv.className = 'pagination';
-   anchor.className = 'active';
+   pageDiv.appendChild(paginationDiv);
+   paginationDiv.appendChild(ul);
+
+   // loop to create and append <li> and <a> elements
+   for (let i = 1; i <= numberOfPages; i ++) {
+      const li = document.createElement('li');
+      const anchor = document.createElement('a');
+      anchor.href = '#';
+      anchor.textContent = i;
+      ul.appendChild(li);
+      li.appendChild(anchor);
+   }
+
+   // initially set class of first <a> element to 'active'
+   ul.firstElementChild.firstElementChild.className = 'active';
+
+   // event listener to activate pagination links
+   
 }
 
-appendPageLinks();
+appendPageLinks(studentList);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
