@@ -62,20 +62,3 @@ function appendPageLinks(list) {
 // initial call of `showPage` and `appendPageLinks` functions
 showPage(studentList, 1);
 appendPageLinks(studentList);
-
-// global variables for search
-const pageHeaderDiv = document.querySelector('.page-header');
-const searchDiv = document.createElement('div');
-const searchField = document.createElement('input');
-const searchButton = document.createElement('button');
-
-// change class name, place holder and text content
-searchDiv.className = 'student-search';
-searchField.placeholder = 'Search for students...';
-searchButton.textContent = 'Search';
-
-// append elements to web page
-pageHeaderDiv.appendChild(searchDiv);
-searchDiv.appendChild(searchField);
-searchDiv.appendChild(searchButton);
-
