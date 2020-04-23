@@ -42,23 +42,30 @@ function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = page * itemsPerPage;
    for (let i = 0; i < list.length; i ++) {
-      if ( list[i] >= startIndex && list[i] < endIndex ) {
+      if ( i >= startIndex && i < endIndex ) {
          list[i].style.display = '';
       }
    }
 }  
 
-showPage(studentList, 1);
+showPage(studentList, 3);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
 function appendPageLinks(list) {
-   
+   const pageDiv = document.getElementsByClassName('page')[0];
+   const paginationDiv = document.createElement('div');
+   const ul = document.createElement('ul');
+   const li = document.createElement('li');
+   const anchor = document.createElement('a');
+
+   paginationDiv.className = 'pagination';
+   anchor.className = 'active';
 }
 
-
+appendPageLinks();
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
